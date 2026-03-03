@@ -1,0 +1,114 @@
+/**
+ * Auth Controller
+ *
+ * Implements:
+ * - User registration with hashed passwords (KDF + salt)
+ * - Login with password verification
+ * - Session (opaque bearer token)
+ */
+
+const { validationResult } = require('express-validator');
+const userModel = require('../models/userModel');
+const sessionModel = require('../models/sessionModel');
+const loginRateLimiter = require('../middleware/loginRateLimiter');
+const { isStrongPassword, hashPassword, verifyPassword } = require('../utils/password');
+
+async function register(req, res, next) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+    const email = String(req.body.email || '').trim().toLowerCase();
+    const password = String(req.body.password || '');
+
+    if (!isStrongPassword(password)) {
+      return res.status(400).json({
+        error: 'Validation Error',
+        message: 'Password fraca. Requisitos: >=8 caracteres, 1 número e 1 caractere especial.'
+      });
+    }
+
+    const existing = await userModel.getUserByEmail(email);
+    if (existing) {
+      return res.status(409).json({ error: 'Conflict', message: 'Email já registado.' });
+    }
+
+    const passwordHash = await hashPassword(password);
+    const user = await userModel.createUser({ email, passwordHash });
+
+    return res.status(201).json({
+      id: user.id,
+      email: user.email,
+      created_at: user.created_at
+    });
+  } catch (err) {
+    return next(err);
+  }
+}
+
+async function login(req, res, next) {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
+    const email = String(req.body.email || '').trim().toLowerCase();
+    const password = String(req.body.password || '');
+
+    // Per exercício 1.2: rejeitar passwords fracas no formulário.
+    // Reforçamos também no servidor (cliente pode ser contornado).
+    if (!isStrongPassword(password)) {
+      loginRateLimiter.recordFailure(req, { email });
+      return res.status(400).json({
+        error: 'Validation Error',
+        message: 'Password fraca. Requisitos: >=8 caracteres, 1 número e 1 caractere especial.'
+      });
+    }
+
+    const userRow = await userModel.getUserByEmail(email);
+    if (!userRow) {
+      loginRateLimiter.recordFailure(req, { email });
+      return res.status(401).json({ error: 'Unauthorized', message: 'Credenciais inválidas.' });
+    }
+
+    const ok = await verifyPassword(password, userRow.password_hash);
+    if (!ok) {
+      loginRateLimiter.recordFailure(req, { email, userId: userRow.id });
+      return res.status(401).json({ error: 'Unauthorized', message: 'Credenciais inválidas.' });
+    }
+
+    loginRateLimiter.recordSuccess(req, { email, userId: userRow.id });
+
+    const ip = loginRateLimiter.getClientIp(req);
+    const userAgent = req.headers['user-agent'] || null;
+
+    const session = await sessionModel.createSession(userRow.id, { ip, userAgent });
+
+    return res.json({
+      token: session.token,
+      expiresAt: session.expiresAt,
+      user: { id: userRow.id, email: userRow.email }
+    });
+  } catch (err) {
+    return next(err);
+  }
+}
+
+async function me(req, res) {
+  return res.json({ user: req.auth.user });
+}
+
+async function logout(req, res, next) {
+  try {
+    await sessionModel.deleteSession(req.auth.token);
+    return res.json({ message: 'Logged out' });
+  } catch (err) {
+    return next(err);
+  }
+}
+
+module.exports = {
+  register,
+  login,
+  me,
+  logout
+};
