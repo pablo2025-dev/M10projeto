@@ -73,7 +73,7 @@
       if (messageEl) {
         messageEl.textContent = st.strong
           ? 'Password forte ✅'
-          : 'Password fraca: precisa de 8+ caracteres, 1 número e 1 caractere especial.';
+          : 'Password fraca: precisa de 8+ caracteres, 1 número e 1 caracter especial.';
       }
     }
 

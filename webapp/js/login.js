@@ -35,8 +35,6 @@
     return;
   }
 
-  AUTH.wirePasswordStrength({ input: pwEl, rulesList: pwRules, submitBtn: btn, messageEl: pwMsg });
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     setMsg('A autenticar...');

@@ -24,7 +24,7 @@ async function register(req, res, next) {
     if (!isStrongPassword(password)) {
       return res.status(400).json({
         error: 'Validation Error',
-        message: 'Password fraca. Requisitos: >=8 caracteres, 1 número e 1 caractere especial.'
+        message: 'Password fraca. Requisitos: >=8 caracteres, 1 número e 1 caracter especial.'
       });
     }
 
@@ -49,33 +49,34 @@ async function register(req, res, next) {
 async function login(req, res, next) {
   try {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
     const email = String(req.body.email || '').trim().toLowerCase();
     const password = String(req.body.password || '');
 
-    // Per exercício 1.2: rejeitar passwords fracas no formulário.
-    // Reforçamos também no servidor (cliente pode ser contornado).
-    if (!isStrongPassword(password)) {
-      loginRateLimiter.recordFailure(req, { email });
-      return res.status(400).json({
-        error: 'Validation Error',
-        message: 'Password fraca. Requisitos: >=8 caracteres, 1 número e 1 caractere especial.'
-      });
-    }
-
+    // Verificar se utilizador existe
     const userRow = await userModel.getUserByEmail(email);
     if (!userRow) {
       loginRateLimiter.recordFailure(req, { email });
-      return res.status(401).json({ error: 'Unauthorized', message: 'Credenciais inválidas.' });
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'Credenciais inválidas.'
+      });
     }
 
+    // Verificar password
     const ok = await verifyPassword(password, userRow.password_hash);
     if (!ok) {
       loginRateLimiter.recordFailure(req, { email, userId: userRow.id });
-      return res.status(401).json({ error: 'Unauthorized', message: 'Credenciais inválidas.' });
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'Credenciais inválidas.'
+      });
     }
 
+    // Login bem sucedido
     loginRateLimiter.recordSuccess(req, { email, userId: userRow.id });
 
     const ip = loginRateLimiter.getClientIp(req);
@@ -88,6 +89,7 @@ async function login(req, res, next) {
       expiresAt: session.expiresAt,
       user: { id: userRow.id, email: userRow.email }
     });
+
   } catch (err) {
     return next(err);
   }
