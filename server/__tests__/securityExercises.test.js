@@ -13,6 +13,7 @@ const userModel = require('../src/models/userModel');
 let app;
 
 describe('Security exercises (2.1 RBAC + 2.2 IDOR protection + 3.1 SQLi + 3.2 XSS/encryption)', () => {
+describe('Security exercises (2.1 RBAC + 2.2 IDOR protection + 3.1 SQLi)', () => {
   const dbFile = path.resolve(__dirname, '..', process.env.DATABASE_URL);
 
   beforeAll(async () => {
