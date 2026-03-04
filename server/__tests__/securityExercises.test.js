@@ -12,8 +12,7 @@ const userModel = require('../src/models/userModel');
 
 let app;
 
-describe('Security exercises (2.1 RBAC + 2.2 IDOR protection + 3.1 SQLi + 3.2 XSS/encryption)', () => {
-describe('Security exercises (2.1 RBAC + 2.2 IDOR protection + 3.1 SQLi)', () => {
+describe('Security exercises (2.1 RBAC + 2.2 IDOR protection + 3.1 SQLi + 3.2 + 4.x)', () => {
   const dbFile = path.resolve(__dirname, '..', process.env.DATABASE_URL);
 
   beforeAll(async () => {
@@ -212,6 +211,54 @@ describe('Security exercises (2.1 RBAC + 2.2 IDOR protection + 3.1 SQLi)', () =>
 
     expect(fetched.status).toBe(200);
     expect(fetched.body.value).toBe('&lt;script&gt;alert(1)&lt;/script&gt;');
+  });
+
+  test('4.1 - refresh endpoint issues a new access token via HttpOnly cookie flow', async () => {
+    await request(app).post('/api/auth/register').send({
+      email: 'refresh@example.com',
+      password: 'Password#123'
+    });
+
+    const login = await request(app).post('/api/auth/login').send({
+      email: 'refresh@example.com',
+      password: 'Password#123'
+    });
+
+    expect(login.status).toBe(200);
+    expect(login.headers['set-cookie']).toBeDefined();
+    const refreshCookie = login.headers['set-cookie'].find(c => c.startsWith('refresh_token='));
+    expect(refreshCookie).toBeDefined();
+
+    const refresh = await request(app)
+      .post('/api/auth/refresh')
+      .set('Cookie', refreshCookie);
+
+    expect(refresh.status).toBe(200);
+    expect(refresh.body).toHaveProperty('accessToken');
+
+    const me = await request(app)
+      .get('/api/auth/me')
+      .set('Authorization', `Bearer ${refresh.body.accessToken}`);
+
+    expect(me.status).toBe(200);
+    expect(me.body).toHaveProperty('user.email', 'refresh@example.com');
+  });
+
+  test('4.2 - blocks CORS requests from non-authorized origin', async () => {
+    const corsFail = await request(app)
+      .get('/health')
+      .set('Origin', 'https://evil.example');
+
+    expect(corsFail.status).toBe(403);
+    expect(corsFail.body).toHaveProperty('message', 'CORS origin não autorizada');
+  });
+
+  test('4.2 - returns security headers', async () => {
+    const ok = await request(app).get('/health');
+    expect(ok.status).toBe(200);
+    expect(ok.headers).toHaveProperty('x-frame-options', 'DENY');
+    expect(ok.headers).toHaveProperty('strict-transport-security');
+    expect(ok.headers).toHaveProperty('content-security-policy');
   });
 
 });

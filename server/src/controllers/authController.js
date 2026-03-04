@@ -4,7 +4,7 @@
  * Implements:
  * - User registration with hashed passwords (KDF + salt)
  * - Login with password verification
- * - Session (opaque bearer token)
+ * - JWT (access token) + refresh token HttpOnly cookie
  */
 
 const { validationResult } = require('express-validator');
@@ -12,6 +12,52 @@ const userModel = require('../models/userModel');
 const sessionModel = require('../models/sessionModel');
 const loginRateLimiter = require('../middleware/loginRateLimiter');
 const { isStrongPassword, hashPassword, verifyPassword } = require('../utils/password');
+const jwt = require('../utils/jwt');
+
+const REFRESH_COOKIE_NAME = 'refresh_token';
+const REFRESH_COOKIE_MAX_AGE_MS = Number(process.env.REFRESH_TOKEN_TTL_MS || (7 * 24 * 60 * 60 * 1000));
+
+function getCookieValue(req, name) {
+  const raw = req.headers.cookie || '';
+  const parts = raw.split(';').map(s => s.trim()).filter(Boolean);
+  for (const p of parts) {
+    const idx = p.indexOf('=');
+    if (idx <= 0) continue;
+    const key = p.slice(0, idx).trim();
+    const val = p.slice(idx + 1).trim();
+    if (key === name) return decodeURIComponent(val);
+  }
+  return null;
+}
+
+function setRefreshCookie(res, token) {
+  const isProd = process.env.NODE_ENV === 'production';
+  res.cookie(REFRESH_COOKIE_NAME, token, {
+    httpOnly: true,
+    secure: isProd,
+    sameSite: 'strict',
+    path: '/api/auth/refresh',
+    maxAge: REFRESH_COOKIE_MAX_AGE_MS
+  });
+}
+
+function clearRefreshCookie(res) {
+  res.clearCookie(REFRESH_COOKIE_NAME, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/api/auth/refresh'
+  });
+}
+
+function buildAccessToken(user) {
+  return jwt.sign({
+    sub: String(user.id),
+    email: user.email,
+    role: user.role,
+    tokenVersion: user.token_version || 0
+  });
+}
 
 function isAdminEmail(email) {
   const raw = process.env.ADMIN_EMAILS || '';
@@ -98,9 +144,12 @@ async function login(req, res, next) {
     const userAgent = req.headers['user-agent'] || null;
 
     const session = await sessionModel.createSession(userRow.id, { ip, userAgent });
+    const accessToken = buildAccessToken(userRow);
+    setRefreshCookie(res, session.token);
 
     return res.json({
-      token: session.token,
+      token: accessToken,
+      accessToken,
       expiresAt: session.expiresAt,
       user: { id: userRow.id, email: userRow.email, role: userRow.role }
     });
@@ -116,8 +165,49 @@ async function me(req, res) {
 
 async function logout(req, res, next) {
   try {
-    await sessionModel.deleteSession(req.auth.token);
+    const refreshToken = getCookieValue(req, REFRESH_COOKIE_NAME);
+    if (refreshToken) {
+      await sessionModel.deleteSession(refreshToken);
+    }
+    clearRefreshCookie(res);
     return res.json({ message: 'Logged out' });
+  } catch (err) {
+    return next(err);
+  }
+}
+
+async function refresh(req, res, next) {
+  try {
+    const refreshToken = getCookieValue(req, REFRESH_COOKIE_NAME);
+    if (!refreshToken) {
+      return res.status(401).json({ error: 'Unauthorized', message: 'Refresh token em falta.' });
+    }
+
+    const currentSession = await sessionModel.getSessionByToken(refreshToken);
+    if (!currentSession) {
+      clearRefreshCookie(res);
+      return res.status(401).json({ error: 'Unauthorized', message: 'Refresh token inválido ou expirado.' });
+    }
+
+    const user = await userModel.getUserById(currentSession.user_id);
+    if (!user) {
+      await sessionModel.deleteSession(refreshToken);
+      clearRefreshCookie(res);
+      return res.status(401).json({ error: 'Unauthorized', message: 'Utilizador inválido.' });
+    }
+
+    await sessionModel.deleteSession(refreshToken);
+    const ip = loginRateLimiter.getClientIp(req);
+    const userAgent = req.headers['user-agent'] || null;
+    const newSession = await sessionModel.createSession(user.id, { ip, userAgent });
+    setRefreshCookie(res, newSession.token);
+
+    const accessToken = buildAccessToken(user);
+    return res.json({
+      token: accessToken,
+      accessToken,
+      expiresAt: newSession.expiresAt
+    });
   } catch (err) {
     return next(err);
   }
@@ -127,5 +217,6 @@ module.exports = {
   register,
   login,
   me,
-  logout
+  logout,
+  refresh
 };
