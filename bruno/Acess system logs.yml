@@ -1,0 +1,44 @@
+info:
+  name: Acess system logs
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: http://localhost:3000/system/logs
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer ZeO2DJWmN-oVlj6FaUQ7P44RBeBByqPnJ7bHcK5YoNY
+  params:
+    - name: category
+      value: incident
+      type: query
+      disabled: true
+    - name: search
+      value: subapplication
+      type: query
+      disabled: true
+    - name: sortBy
+      value: id
+      type: query
+      disabled: true
+    - name: sortOrder
+      value: ASC
+      type: query
+      disabled: true
+    - name: limit
+      value: "10"
+      type: query
+      disabled: true
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
