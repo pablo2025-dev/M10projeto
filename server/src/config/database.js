@@ -68,6 +68,10 @@ async function initializeDatabase() {
     if (!hasRole) {
       await db.exec(`ALTER TABLE users ADD COLUMN role TEXT NOT NULL DEFAULT 'user'`);
     }
+    const hasTokenVersion = userCols.some(c => c && c.name === 'token_version');
+    if (!hasTokenVersion) {
+      await db.exec(`ALTER TABLE users ADD COLUMN token_version INTEGER NOT NULL DEFAULT 0`);
+    }
 
     // Sessions table (opaque bearer token)
     await db.exec(`
