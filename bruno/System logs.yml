@@ -1,14 +1,16 @@
 info:
-  name: Get requests
+  name: System logs
   type: http
-  seq: 1
+  seq: 4
 
 http:
   method: GET
-  url: http://localhost:3000/api/tickets
+  url: http://localhost:3000/system/logs
   headers:
     - name: Content-Type
       value: application/json
+    - name: Authorization
+      value: Bearer ZeO2DJWmN-oVlj6FaUQ7P44RBeBByqPnJ7bHcK5YoNY
   params:
     - name: category
       value: incident
@@ -30,6 +32,9 @@ http:
       value: "10"
       type: query
       disabled: true
+  body:
+    type: json
+    data: ""
   auth: inherit
 
 settings:

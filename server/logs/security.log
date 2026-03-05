@@ -113,3 +113,5 @@
 {"timestamp":"2026-03-04T11:50:21.161Z","event":"LOGIN_SUCCESS","ip":"::1","email":"admin@teste.teste","userId":6}
 {"timestamp":"2026-03-04T11:59:56.089Z","event":"LOGIN_SUCCESS","ip":"::1","email":"admin@teste.teste","userId":6}
 {"timestamp":"2026-03-04T12:00:04.541Z","event":"LOGIN_SUCCESS","ip":"::1","email":"teste@teste.teste","userId":2}
+{"timestamp":"2026-03-04T12:06:48.313Z","event":"LOGIN_SUCCESS","ip":"127.0.0.1","email":"idor-a@example.com","userId":4}
+{"timestamp":"2026-03-04T12:06:48.571Z","event":"LOGIN_SUCCESS","ip":"127.0.0.1","email":"idor-b@example.com","userId":5}
