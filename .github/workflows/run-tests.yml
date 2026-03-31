@@ -2,7 +2,7 @@ name: Run Unit Tests
 
 on:
   push:
-    branches: [ cicd-tests-vasco ]
+    branches: [ cicd-tests-vasco, main ]
   pull_request:
     branches: [ main ]
 
@@ -12,7 +12,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,10 +20,35 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: '24'
+          node-version: '20'  # Versão LTS mais estável
+          cache: 'npm'
 
-      - name: Install dependencies
+      - name: Install server dependencies
+        working-directory: ./server
         run: npm ci
 
-      - name: Run unit tests
+      - name: Run Jest unit tests
+        working-directory: ./server
         run: npm test
+
+      - name: Run Node.js Assert unit tests
+        working-directory: ./server
+        run: node run-unit-tests.js
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            server/coverage/
+            server/test-results/
+          retention-days: 7
+
+      - name: Upload test coverage report
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-coverage-report
+          path: server/coverage/lcov-report/
+          retention-days: 7
