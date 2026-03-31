@@ -11,13 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",  
     "express-validator": "^7.0.0",
-    "sqlite": "^5.0.1",  
+    "sqlite": "^5.0.1",
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "jest": "^29.0.0",
     "supertest": "^6.3.3",
-    "fs-extra": "^11.1.0"  
+    "fs-extra": "^11.1.0"
   }
 }
