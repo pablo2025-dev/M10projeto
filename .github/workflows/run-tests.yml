@@ -31,6 +31,10 @@ jobs:
         working-directory: ./server
         run: npm test -- --testPathIgnorePatterns=securityExercises
 
+      - name: Run Jest acceptance tests
+        working-directory: ./server
+        run: npm test -- --testPathPattern=acceptance
+
       - name: Run Node.js Assert unit tests
         working-directory: ./server
         run: node run-unit-tests.js

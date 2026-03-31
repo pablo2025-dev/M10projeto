@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.88% </span>
+                <span class="strong">80.32% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>53/61</span>
+                <span class='fraction'>49/61</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40.9% </span>
+                <span class="strong">13.63% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/22</span>
+                <span class='fraction'>3/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.07% </span>
+                <span class="strong">80.35% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>51/56</span>
+                <span class='fraction'>45/56</span>
             </div>
         
             
@@ -215,8 +215,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,9 +242,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,21 +252,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -276,9 +262,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -326,9 +326,9 @@ initializeDatabase()
     logger.info('Database initialized and ready');
 &nbsp;
     const seedResult = await seedTicketsIfEmpty();
-    if (seedResult.seeded) {
-      logger.info(`Ticket seeding completed. Inserted ${seedResult.insertedCount} tickets.`);
-    } else <span class="missing-if-branch" title="else path not taken" >E</span>{
+<span class="cstat-no" title="statement not covered" >    if (seedResult.seeded) {</span>
+<span class="cstat-no" title="statement not covered" >      logger.info(`Ticket seeding completed. Inserted ${seedResult.insertedCount} tickets.`);</span>
+    } else {
 <span class="cstat-no" title="statement not covered" >      logger.info(`Ticket seeding skipped: ${seedResult.reason} (existing tickets: ${seedResult.existingCount || 0})`);</span>
     }
   })
@@ -353,9 +353,9 @@ app.use(helmet({
 }));
 app.use(cors({
   origin(origin, callback) {
-    if (!origin) return callback(null, true);
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (allowedOrigins.includes(origin)) <span class="cstat-no" title="statement not covered" >return callback(null, true);</span>
-    return callback(new Error('CORS origin não autorizada'));
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!origin) return callback(null, true);
+<span class="cstat-no" title="statement not covered" >    if (allowedOrigins.includes(origin)) <span class="cstat-no" title="statement not covered" >return callback(null, true);</span></span>
+<span class="cstat-no" title="statement not covered" >    return callback(new Error('CORS origin não autorizada'));</span>
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -372,7 +372,7 @@ app.use(express.static(path.join(__dirname, '../../webapp')));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 &nbsp;
 // API info (kept under /api so / serves the frontend)
-app.get('/api', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; <span class="cstat-no" title="statement not covered" >res.json({ name:'Ticket Manager API', version:'2.0.0', endpoints:{ health:'/health', auth:'/api/auth', tickets:'/api/tickets', stats:'/api/stats', documentation:'/api-docs' } }))</span>;
+app.get('/api', (req, res) =&gt; res.json({ name:'Ticket Manager API', version:'2.0.0', endpoints:{ health:'/health', auth:'/api/auth', tickets:'/api/tickets', stats:'/api/stats', documentation:'/api-docs' } }));
 &nbsp;
 app.use('/health', healthRoutes);
 app.use('/api/auth', authRoutes);
@@ -386,10 +386,10 @@ app.use('/secrets', requireAuth, secretRoutes);
 app.use('/system', requireAuth, requireRole('admin'), systemRoutes);
 &nbsp;
 // 404 &amp; error handler
-app.use(<span class="fstat-no" title="function not covered" >(r</span>eq,res)=&gt;<span class="cstat-no" title="statement not covered" >res.status(404).json({ error:'Not Found', message:`Route ${req.method} ${req.path} not found` }))</span>;
-app.use((err, req, res, next)=&gt;{
-  <span class="missing-if-branch" title="else path not taken" >E</span>if (err &amp;&amp; err.message === 'CORS origin não autorizada') {
-    return res.status(403).json({ error: 'Forbidden', message: err.message });
+app.use((req,res)=&gt;res.status(404).json({ error:'Not Found', message:`Route ${req.method} ${req.path} not found` }));
+app.use(<span class="fstat-no" title="function not covered" >(e</span>rr, req, res, next)=&gt;{
+<span class="cstat-no" title="statement not covered" >  if (err &amp;&amp; err.message === 'CORS origin não autorizada') {</span>
+<span class="cstat-no" title="statement not covered" >    return res.status(403).json({ error: 'Forbidden', message: err.message });</span>
   }
 <span class="cstat-no" title="statement not covered" >  logger.error('Unhandled error:', err);</span>
 <span class="cstat-no" title="statement not covered" >  res.status(err.status||500).json({ error:err.name||'Internal Server Error', message:err.message||'Unexpected error', ...(process.env.NODE_ENV==='development' &amp;&amp; { stack: err.stack }) });</span>
@@ -403,7 +403,7 @@ module.exports = app;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-30T18:09:40.761Z
+                at 2026-03-31T22:42:53.586Z
             </div>
         <script src="../prettify.js"></script>
         <script>

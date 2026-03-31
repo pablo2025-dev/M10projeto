@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">86.36% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/22</span>
+                <span class='fraction'>4/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.54% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/11</span>
+                <span class='fraction'>2/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.47% </span>
+                <span class="strong">19.04% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/21</span>
+                <span class='fraction'>4/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -134,43 +134,43 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -190,45 +190,45 @@ const { getDatabase } = require('../config/database');
 &nbsp;
 const SESSION_TTL_MS = Number(process.env.SESSION_TTL_MS || (24 * 60 * 60 * 1000));
 &nbsp;
-function generateToken() {
+function <span class="fstat-no" title="function not covered" >generateToken(</span>) {
   // URL-safe token
-  return crypto.randomBytes(32).toString('base64url');
+<span class="cstat-no" title="statement not covered" >  return crypto.randomBytes(32).toString('base64url');</span>
 }
 &nbsp;
-async function createSession(userId, { ip = <span class="branch-0 cbranch-no" title="branch not covered" >null,</span> userAgent = <span class="branch-0 cbranch-no" title="branch not covered" >null </span>} = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
-  const db = getDatabase();
-  const token = generateToken();
-  const expiresAt = new Date(Date.now() + SESSION_TTL_MS).toISOString();
+async function <span class="fstat-no" title="function not covered" >createSession(</span>userId, { ip = <span class="branch-0 cbranch-no" title="branch not covered" >null,</span> userAgent = <span class="branch-0 cbranch-no" title="branch not covered" >null </span>} = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+  const db = <span class="cstat-no" title="statement not covered" >getDatabase();</span>
+  const token = <span class="cstat-no" title="statement not covered" >generateToken();</span>
+  const expiresAt = <span class="cstat-no" title="statement not covered" >new Date(Date.now() + SESSION_TTL_MS).toISOString();</span>
 &nbsp;
-  await db.run(
+<span class="cstat-no" title="statement not covered" >  await db.run(</span>
     `INSERT INTO sessions (token, user_id, expires_at, ip, user_agent) VALUES (?, ?, ?, ?, ?)` ,
     [token, userId, expiresAt, ip, userAgent]
   );
 &nbsp;
-  return { token, expiresAt };
+<span class="cstat-no" title="statement not covered" >  return { token, expiresAt };</span>
 }
 &nbsp;
-async function getSessionByToken(token) {
-  const db = getDatabase();
-  const row = await db.get(
+async function <span class="fstat-no" title="function not covered" >getSessionByToken(</span>token) {
+  const db = <span class="cstat-no" title="statement not covered" >getDatabase();</span>
+  const row = <span class="cstat-no" title="statement not covered" >await db.get(</span>
     `SELECT token, user_id, created_at, expires_at, ip, user_agent FROM sessions WHERE token = ?`,
     [token]
   );
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!row) <span class="cstat-no" title="statement not covered" >return null;</span>
+<span class="cstat-no" title="statement not covered" >  if (!row) <span class="cstat-no" title="statement not covered" >return null;</span></span>
 &nbsp;
-  const now = Date.now();
-  const exp = Date.parse(row.expires_at);
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (Number.isNaN(exp) || exp &lt;= now) {
+  const now = <span class="cstat-no" title="statement not covered" >Date.now();</span>
+  const exp = <span class="cstat-no" title="statement not covered" >Date.parse(row.expires_at);</span>
+<span class="cstat-no" title="statement not covered" >  if (Number.isNaN(exp) || exp &lt;= now) {</span>
 <span class="cstat-no" title="statement not covered" >    await deleteSession(token);</span>
 <span class="cstat-no" title="statement not covered" >    return null;</span>
   }
 &nbsp;
-  return row;
+<span class="cstat-no" title="statement not covered" >  return row;</span>
 }
 &nbsp;
-async function deleteSession(token) {
-  const db = getDatabase();
-  await db.run(`DELETE FROM sessions WHERE token = ?`, [token]);
+async function <span class="fstat-no" title="function not covered" >deleteSession(</span>token) {
+  const db = <span class="cstat-no" title="statement not covered" >getDatabase();</span>
+<span class="cstat-no" title="statement not covered" >  await db.run(`DELETE FROM sessions WHERE token = ?`, [token]);</span>
 }
 &nbsp;
 module.exports = {
@@ -244,7 +244,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-30T18:09:40.761Z
+                at 2026-03-31T22:42:53.586Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
