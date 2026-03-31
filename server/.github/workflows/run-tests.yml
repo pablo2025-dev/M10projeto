@@ -2,7 +2,7 @@ name: Run Unit Tests
 
 on:
   push:
-    branches: [ cicd-tests-vasco ]  # Substitui pelo nome da tua branch
+    branches: [ cicd-tests-vasco ]
   pull_request:
     branches: [ main ]
 
