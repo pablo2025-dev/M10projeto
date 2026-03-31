@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/models/secretModel.js</title>
+    <title>Code coverage report for src/utils/logSanitizer.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/models</a> secretModel.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/utils</a> logSanitizer.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">96% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>24/25</span>
+                <span class='fraction'>33/55</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">51.06% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>24/47</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.83% </span>
+                <span class="strong">71.11% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>23/24</span>
+                <span class='fraction'>32/45</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -144,207 +144,168 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">171x</span>
+<span class="cline-any cline-yes">171x</span>
+<span class="cline-any cline-yes">171x</span>
+<span class="cline-any cline-yes">171x</span>
+<span class="cline-any cline-yes">171x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">269x</span>
+<span class="cline-any cline-yes">269x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">269x</span>
+<span class="cline-any cline-yes">171x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">171x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">98x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">232x</span>
+<span class="cline-any cline-yes">232x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">232x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">232x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">232x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">185x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">84x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * Secret model (SQLite)
- */
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const SENSITIVE_KEYS = [
+  'email',
+  'password',
+  'password_hash',
+  'token',
+  'accesstoken',
+  'refresh_token',
+  'authorization',
+  'cookie'
+];
 &nbsp;
-const { getDatabase } = require('../config/database');
-const { encryptSecretValue, decryptSecretValue } = require('../utils/cryptoSecrets');
-&nbsp;
-async function createSecret({ ownerId, name, value }) {
-  const db = getDatabase();
-  const encryptedValue = encryptSecretValue(value);
-&nbsp;
-  const result = await db.run(
-    `INSERT INTO secrets (owner_id, name, value) VALUES (?, ?, ?)`,
-    [ownerId, name, encryptedValue]
-  );
-&nbsp;
-  return getSecretById(result.lastID);
+function maskEmail(value) {
+  const str = String(value);
+  const parts = str.split('@');
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (parts.length !== 2) <span class="cstat-no" title="statement not covered" >return '[REDACTED_EMAIL]';</span>
+  const local = parts[0];
+  const domain = parts[1];
+  const safeLocal = local.length &lt;= 2 ? `${local[0] || <span class="branch-1 cbranch-no" title="branch not covered" >'*'}</span>*` : `${local.slice(0, 2)}***`;
+  return `${safeLocal}@${domain}`;
 }
 &nbsp;
-async function getSecretById(id) {
-  const db = getDatabase();
-  const row = await db.get(
-    `SELECT id, owner_id, name, value, created_at FROM secrets WHERE id = ?`,
-    [id]
-  );
-&nbsp;
-  return decryptSecretRow(row);
+function <span class="fstat-no" title="function not covered" >maskToken(</span>value) {
+  const str = <span class="cstat-no" title="statement not covered" >String(value || '');</span>
+<span class="cstat-no" title="statement not covered" >  if (!str) <span class="cstat-no" title="statement not covered" >return '[REDACTED_TOKEN]';</span></span>
+<span class="cstat-no" title="statement not covered" >  if (str.length &lt;= 10) <span class="cstat-no" title="statement not covered" >return '[REDACTED_TOKEN]';</span></span>
+<span class="cstat-no" title="statement not covered" >  return `${str.slice(0, 4)}...[REDACTED]...${str.slice(-4)}`;</span>
 }
 &nbsp;
-async function getSecretByIdForOwner(id, ownerId) {
-  const db = getDatabase();
-  const row = await db.get(
-    `SELECT id, owner_id, name, value, created_at
-     FROM secrets
-     WHERE id = ? AND owner_id = ?`,
-    [id, ownerId]
-  );
-&nbsp;
-  return decryptSecretRow(row);
+function sanitizeString(value) {
+  const str = String(value);
+  const emailMasked = str.replace(/\b([A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,})\b/gi, <span class="fstat-no" title="function not covered" >(e</span>mail) =&gt; <span class="cstat-no" title="statement not covered" >maskEmail(email))</span>;
+  const passwordMasked = emailMasked.replace(/(password\s*[=:]\s*)([^\s,;]+)/gi, '$1[REDACTED_PASSWORD]');
+  const bearerMasked = passwordMasked.replace(/(Bearer\s+)([A-Za-z0-9\-_.]+)/gi, '$1[REDACTED_TOKEN]');
+  return bearerMasked;
 }
 &nbsp;
-//Lists secrets that belong to a given owner, with optional text search on name/value.
-async function listSecretsForOwner({ ownerId, search }) {
-  const db = getDatabase();
+function sanitizeForLogs(input, keyHint = '') {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (input == null) <span class="cstat-no" title="statement not covered" >return input;</span>
+  const normalizedKeyHint = String(keyHint || '').toLowerCase();
 &nbsp;
-  const baseSql = `
-    SELECT id, owner_id, name, value, created_at
-    FROM secrets
-    WHERE owner_id = ?
-  `;
-&nbsp;
-  const rows = await db.all(`${baseSql} ORDER BY created_at DESC`, [ownerId]);
-  const decryptedSecrets = rows.map(decryptSecretRow);
-&nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!search) {
-<span class="cstat-no" title="statement not covered" >    return decryptedSecrets;</span>
+  if (typeof input === 'string') {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (SENSITIVE_KEYS.includes(normalizedKeyHint)) {
+<span class="cstat-no" title="statement not covered" >      if (normalizedKeyHint.includes('password')) <span class="cstat-no" title="statement not covered" >return '[REDACTED_PASSWORD]';</span></span>
+<span class="cstat-no" title="statement not covered" >      if (normalizedKeyHint.includes('email')) <span class="cstat-no" title="statement not covered" >return maskEmail(input);</span></span>
+<span class="cstat-no" title="statement not covered" >      if (normalizedKeyHint === 'authorization' || normalizedKeyHint === 'cookie') <span class="cstat-no" title="statement not covered" >return '[REDACTED_SECRET]';</span></span>
+<span class="cstat-no" title="statement not covered" >      return maskToken(input);</span>
+    }
+    return sanitizeString(input);
   }
 &nbsp;
-  const needle = String(search).toLowerCase();
-  return decryptedSecrets.filter(secret =&gt;
-    String(secret.name).toLowerCase().includes(needle) ||
-    String(secret.value).toLowerCase().includes(needle)
-  );
+  if (typeof input === 'number' || typeof input === 'boolean') return input;
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (Array.isArray(input)) {
+<span class="cstat-no" title="statement not covered" >    return input.map(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >sanitizeForLogs(item, keyHint))</span>;</span>
+  }
+&nbsp;
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof input === 'object') {
+    const output = {};
+    for (const [key, value] of Object.entries(input)) {
+      const lower = key.toLowerCase();
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (lower.includes('password')) {
+<span class="cstat-no" title="statement not covered" >        output[key] = '[REDACTED_PASSWORD]';</span>
+      } else <span class="missing-if-branch" title="if path not taken" >I</span>if (lower === 'authorization' || lower === 'cookie') {
+<span class="cstat-no" title="statement not covered" >        output[key] = '[REDACTED_SECRET]';</span>
+      } else <span class="missing-if-branch" title="if path not taken" >I</span>if (lower.includes('token')) {
+<span class="cstat-no" title="statement not covered" >        output[key] = maskToken(value);</span>
+      } else if (lower.includes('email')) {
+        output[key] = maskEmail(value);
+      } else {
+        output[key] = sanitizeForLogs(value, lower);
+      }
+    }
+    return output;
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return String(input);</span>
 }
-&nbsp;
-/*TESTING SQL INJECTION
-async function listSecretsForOwner({ ownerId, search }) {
-  const db = getDatabase();
-&nbsp;
-  const query = `
-    SELECT id, owner_id, name, value, created_at
-    FROM secrets
-    WHERE owner_id = ${ownerId}
-    AND name LIKE '%${search}%'
-  `;
-&nbsp;
-  return db.all(query);
-}
-*/
 &nbsp;
 module.exports = {
-  createSecret,
-  getSecretById,
-  getSecretByIdForOwner,
-  listSecretsForOwner
+  sanitizeForLogs
 };
-&nbsp;
-function decryptSecretRow(secretRow) {
-  if (!secretRow) return null;
-  return {
-    ...secretRow,
-    value: decryptSecretValue(secretRow.value)
-  };
-}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
