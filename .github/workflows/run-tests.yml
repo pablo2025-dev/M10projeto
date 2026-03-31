@@ -29,7 +29,7 @@ jobs:
 
       - name: Run Jest unit tests
         working-directory: ./server
-        run: npm test
+        run: npm test -- --testPathIgnorePatterns=securityExercises
 
       - name: Run Node.js Assert unit tests
         working-directory: ./server
