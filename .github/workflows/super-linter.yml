@@ -1,0 +1,32 @@
+name: Super-Linter
+
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  super-lint:
+    name: Lint JavaScript
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read
+      statuses: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Run Super-Linter
+        uses: super-linter/super-linter@v8.5.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
+          FILTER_REGEX_INCLUDE: ".*\\.js$"
+          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.json
