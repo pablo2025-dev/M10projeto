@@ -34,3 +34,9 @@
 {"timestamp":"2026-03-31T22:42:04.754Z","event":"LOGIN_SUCCESS","ip":"127.0.0.1","email":"ti***@example.com","userId":45}
 {"timestamp":"2026-03-31T22:42:23.096Z","event":"LOGIN_FAILED","ip":"127.0.0.1","failuresInWindow":1,"email":"au***@example.com"}
 {"timestamp":"2026-03-31T22:42:24.469Z","event":"LOGIN_SUCCESS","ip":"127.0.0.1","email":"ti***@example.com","userId":45}
+{"timestamp":"2026-03-31T22:55:43.867Z","event":"LOGIN_FAILED","ip":"127.0.0.1","failuresInWindow":1,"email":"au***@example.com"}
+{"timestamp":"2026-03-31T22:55:45.371Z","event":"LOGIN_SUCCESS","ip":"127.0.0.1","email":"ti***@example.com","userId":49}
+{"timestamp":"2026-03-31T22:56:57.925Z","event":"LOGIN_FAILED","ip":"127.0.0.1","failuresInWindow":1,"email":"au***@example.com"}
+{"timestamp":"2026-03-31T22:56:59.794Z","event":"LOGIN_SUCCESS","ip":"127.0.0.1","email":"ti***@example.com","userId":53}
+{"timestamp":"2026-03-31T22:59:07.431Z","event":"LOGIN_FAILED","ip":"127.0.0.1","failuresInWindow":1,"email":"au***@example.com"}
+{"timestamp":"2026-03-31T22:59:09.702Z","event":"LOGIN_SUCCESS","ip":"127.0.0.1","email":"ti***@example.com","userId":57}
